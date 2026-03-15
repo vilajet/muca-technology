@@ -6,13 +6,20 @@ import ProductDetail from './ProductDetail'
 export default function Services() {
   const [products, setProducts] = useState<Product[]>([])
   const [loading, setLoading] = useState(true)
+  const [error, setError] = useState(false)
   const [activeCategory, setActiveCategory] = useState('Te gjitha')
   const [selectedProduct, setSelectedProduct] = useState<Product | null>(null)
 
   useEffect(() => {
-    getProducts()
-      .then((data) => setProducts(data.filter((p) => p.visible !== false)))
-      .catch(console.error)
+    const timeout = new Promise<never>((_, reject) =>
+      setTimeout(() => reject(new Error('timeout')), 10000)
+    )
+    Promise.race([getProducts(), timeout])
+      .then((data) => setProducts((data as Product[]).filter((p) => p.visible !== false)))
+      .catch((err) => {
+        console.error(err)
+        setError(true)
+      })
       .finally(() => setLoading(false))
   }, [])
 
@@ -46,6 +53,11 @@ export default function Services() {
 
         {loading ? (
           <div className="loading-spinner"><div className="spinner" /></div>
+        ) : error ? (
+          <div className="empty-state">
+            <div className="icon"><FiPackage /></div>
+            <p>Nuk mund të ngarkohen produktet. Ju lutemi provoni përsëri.</p>
+          </div>
         ) : filtered.length === 0 ? (
           <div className="empty-state">
             <div className="icon"><FiPackage /></div>
