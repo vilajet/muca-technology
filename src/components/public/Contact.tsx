@@ -33,7 +33,7 @@ export default function Contact() {
           <div className="contact-info">
             <div className="contact-info-item">
               <FiPhone className="icon" />
-              <a href="tel:+355693667770">+355 69 366 7770</a>
+              <a href="tel:+355693637770">+355 69 363 7770</a>
             </div>
             <div className="contact-info-item">
               <FiMail className="icon" />
