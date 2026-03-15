@@ -285,12 +285,12 @@ img {
 
 /* ===== SECTION ===== */
 .section {
-  padding: 100px 20px;
+  padding: 60px 20px;
 }
 
 .section-header {
   text-align: center;
-  margin-bottom: 60px;
+  margin-bottom: 40px;
 }
 
 .section-header h2 {
