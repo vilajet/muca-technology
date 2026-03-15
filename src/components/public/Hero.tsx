@@ -10,8 +10,8 @@ export default function Hero() {
         <div className="hero-logo">M</div>
         <h1>Muca Technology</h1>
         <p className="tagline">
-          Zgjidhje inovative teknologjike për biznesin tuaj.
-          Ofrojmë shërbime dhe produkte cilësore që transformojnë idetë në realitet.
+          Instalim profesional i kamerave të sigurisë, sistemeve të alarmit,
+          instalimeve elektrike, internetit dhe TV-së për shtëpinë dhe biznesin tuaj.
         </p>
         <div className="hero-buttons">
           <a href="#sherbimet" className="btn btn-primary">

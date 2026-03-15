@@ -18,10 +18,18 @@ export interface Product {
   description?: string
   price?: number | null
   photoURL?: string
+  photos?: string[]
   category?: string
   order: number
   visible: boolean
   createdAt?: string
+}
+
+/** Helper: get photos array with backward compat for old photoURL field */
+export function getProductPhotos(product: Product): string[] {
+  if (product.photos && product.photos.length > 0) return product.photos
+  if (product.photoURL) return [product.photoURL]
+  return []
 }
 
 export type ProductFormData = Omit<Product, 'id' | 'order' | 'visible' | 'createdAt'>

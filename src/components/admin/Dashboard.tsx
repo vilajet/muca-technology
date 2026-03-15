@@ -1,7 +1,7 @@
 import { useState, useEffect, useCallback } from 'react'
 import { useNavigate } from 'react-router-dom'
 import { useAuth } from '../../contexts/AuthContext'
-import { getProducts, addProduct, updateProduct, deleteProduct, swapProductOrder, type Product, type ProductFormData } from '../../services/products'
+import { getProducts, addProduct, updateProduct, deleteProduct, swapProductOrder, getProductPhotos, type Product, type ProductFormData } from '../../services/products'
 import ProductForm from './ProductForm'
 import {
   FiPlus, FiEdit2, FiTrash2, FiArrowUp, FiArrowDown,
@@ -110,8 +110,8 @@ export default function Dashboard() {
               key={product.id}
               className={`admin-product-item ${product.visible === false ? 'hidden-product' : ''}`}
             >
-              {product.photoURL ? (
-                <img src={product.photoURL} alt={product.name} className="admin-product-thumb" />
+              {getProductPhotos(product).length > 0 ? (
+                <img src={getProductPhotos(product)[0]} alt={product.name} className="admin-product-thumb" />
               ) : (
                 <div className="admin-product-thumb" style={{
                   display: 'flex', alignItems: 'center', justifyContent: 'center',
@@ -131,7 +131,7 @@ export default function Dashboard() {
                 </h4>
                 <div className="meta">
                   {product.category && <span>{product.category} · </span>}
-                  {product.price && <span>{product.price} Lek</span>}
+                  {product.price && <span>€{product.price}</span>}
                 </div>
               </div>
               <div className="admin-product-actions">

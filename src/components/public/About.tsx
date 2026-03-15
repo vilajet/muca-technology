@@ -5,26 +5,27 @@ export default function About() {
         <div className="section-header">
           <div className="accent-line" />
           <h2>Rreth Nesh</h2>
-          <p>Partneri juaj i besueshëm teknologjik</p>
+          <p>Partneri juaj i besueshëm për siguri dhe teknologji</p>
         </div>
 
         <div className="about-content">
           <div className="about-text">
             <p>
-              Muca Technology është një kompani e dedikuar ndaj ofrimit të zgjidhjeve
-              teknologjike moderne dhe të personalizuara. Ne besojmë se teknologjia
-              duhet të jetë e thjeshtë, e aksesueshme dhe e fuqishme.
+              Muca Technology është e specializuar në instalimin e kamerave të sigurisë
+              për shtëpi dhe biznese, sistemeve të alarmit, instalimeve elektrike,
+              si dhe konfigurimeve të internetit dhe TV-së. Cilësia dhe besueshmëria
+              janë në themel të çdo pune që bëjmë.
             </p>
             <p>
-              Ekipi ynë i profesionistëve punon çdo ditë për të sjellë inovacion
-              dhe cilësi në çdo projekt. Qëllimi ynë është të ndihmojmë bizneset
-              të rriten dhe të arrijnë suksesin përmes teknologjisë.
+              Me vite eksperiencë në fushën e sigurisë dhe teknologjisë, ne ofrojmë
+              zgjidhje profesionale dhe të personalizuara për çdo klient. Nga konsultimi
+              fillestar deri te instalimi dhe mirëmbajtja — jemi gjithmonë pranë jush.
             </p>
           </div>
           <div className="about-stats">
             <div className="stat-card animate-in">
               <span className="number">50+</span>
-              <span className="label">Projekte të përfunduara</span>
+              <span className="label">Instalime të përfunduara</span>
             </div>
             <div className="stat-card animate-in">
               <span className="number">30+</span>

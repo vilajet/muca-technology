@@ -1,11 +1,13 @@
 import { useEffect, useState } from 'react'
-import { getProducts, type Product } from '../../services/products'
+import { getProducts, getProductPhotos, type Product } from '../../services/products'
 import { FiPackage } from 'react-icons/fi'
+import ProductDetail from './ProductDetail'
 
 export default function Services() {
   const [products, setProducts] = useState<Product[]>([])
   const [loading, setLoading] = useState(true)
   const [activeCategory, setActiveCategory] = useState('Te gjitha')
+  const [selectedProduct, setSelectedProduct] = useState<Product | null>(null)
 
   useEffect(() => {
     getProducts()
@@ -25,7 +27,7 @@ export default function Services() {
         <div className="section-header">
           <div className="accent-line" />
           <h2>Shërbimet & Produktet</h2>
-          <p>Zgjidhje të personalizuara teknologjike për çdo nevojë të biznesit tuaj</p>
+          <p>Kamera sigurie, sisteme alarmi, instalime elektrike, internet dhe TV</p>
         </div>
 
         {categories.length > 1 && (
@@ -51,35 +53,49 @@ export default function Services() {
           </div>
         ) : (
           <div className="products-grid">
-            {filtered.map((product) => (
-              <div key={product.id} className="product-card animate-in">
-                {product.photoURL ? (
-                  <img
-                    src={product.photoURL}
-                    alt={product.name}
-                    className="product-card-image"
-                    loading="lazy"
-                  />
-                ) : (
-                  <div className="product-card-placeholder">
-                    <FiPackage />
+            {filtered.map((product) => {
+              const photos = getProductPhotos(product)
+              return (
+                <div
+                  key={product.id}
+                  className="product-card animate-in clickable"
+                  onClick={() => setSelectedProduct(product)}
+                >
+                  {photos.length > 0 ? (
+                    <img
+                      src={photos[0]}
+                      alt={product.name}
+                      className="product-card-image"
+                      loading="lazy"
+                    />
+                  ) : (
+                    <div className="product-card-placeholder">
+                      <FiPackage />
+                    </div>
+                  )}
+                  <div className="product-card-body">
+                    {product.category && (
+                      <div className="product-card-category">{product.category}</div>
+                    )}
+                    <h3>{product.name}</h3>
+                    <p>{product.description}</p>
+                    {product.price && (
+                      <div className="product-card-price">€{product.price}</div>
+                    )}
                   </div>
-                )}
-                <div className="product-card-body">
-                  {product.category && (
-                    <div className="product-card-category">{product.category}</div>
-                  )}
-                  <h3>{product.name}</h3>
-                  <p>{product.description}</p>
-                  {product.price && (
-                    <div className="product-card-price">{product.price} Lek</div>
-                  )}
                 </div>
-              </div>
-            ))}
+              )
+            })}
           </div>
         )}
       </div>
+
+      {selectedProduct && (
+        <ProductDetail
+          product={selectedProduct}
+          onClose={() => setSelectedProduct(null)}
+        />
+      )}
     </section>
   )
 }
