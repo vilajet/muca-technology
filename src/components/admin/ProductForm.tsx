@@ -11,6 +11,7 @@ const CATEGORIES = [
   'Sisteme Alarmi',
   'Instalime Elektrike',
   'Internet & TV',
+  'Servis TV & PC',
 ]
 
 interface Props {

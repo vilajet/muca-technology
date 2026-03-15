@@ -51,7 +51,7 @@ export default function Contact() {
             </div>
             <div className="contact-info-item">
               <FiMapPin className="icon" />
-              <span>Holandë</span>
+              <span>Divjakë, Lushnjë, Fier</span>
             </div>
             <div className="contact-info-item">
               <FiClock className="icon" />
