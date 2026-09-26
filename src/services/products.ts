@@ -27,9 +27,11 @@ export interface Product {
 
 /** Helper: get photos array with backward compat for old photoURL field */
 export function getProductPhotos(product: Product): string[] {
-  if (product.photos && product.photos.length > 0) return product.photos
-  if (product.photoURL) return [product.photoURL]
-  return []
+  const photos = product.photos && product.photos.length > 0
+    ? product.photos
+    : product.photoURL ? [product.photoURL] : []
+  // Firebase Storage is no longer available; hide those dead links
+  return photos.filter((url) => !url.includes('firebasestorage.googleapis.com'))
 }
 
 export type ProductFormData = Omit<Product, 'id' | 'order' | 'visible' | 'createdAt'>
