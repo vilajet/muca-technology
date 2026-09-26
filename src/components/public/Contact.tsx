@@ -1,8 +1,8 @@
-import { FaWhatsapp, FaInstagram } from 'react-icons/fa'
-import { FiMail, FiMapPin, FiPhone, FiClock } from 'react-icons/fi'
+import { FaWhatsapp, FaInstagram } from "react-icons/fa";
+import { FiMail, FiMapPin, FiPhone, FiClock } from "react-icons/fi";
 
 export default function Contact() {
-  const whatsapp = import.meta.env.VITE_WHATSAPP_NUMBER || ''
+  const whatsapp = import.meta.env.VITE_WHATSAPP_NUMBER || "";
 
   return (
     <section className="section" id="kontakt">
@@ -15,9 +15,9 @@ export default function Contact() {
 
         <div className="contact-content">
           <p>
-            Dëshironi të instaloni kamera sigurie, sisteme alarmi, apo keni nevojë
-            për instalime elektrike ose internet? Na shkruani në WhatsApp për një
-            konsultim pa pagesë.
+            Dëshironi të instaloni kamera sigurie, sisteme alarmi, apo keni
+            nevojë për instalime elektrike ose internet? Na shkruani në WhatsApp
+            për një konsultim pa pagesë.
           </p>
           {whatsapp && (
             <a
@@ -37,16 +37,18 @@ export default function Contact() {
             </div>
             <div className="contact-info-item">
               <FiMail className="icon" />
-              <a href="mailto:mucatechnology@gmail.com">mucatechnology@gmail.com</a>
+              <a href="mailto:mucatechnology@gmail.com">
+                mucatechnology@gmail.com
+              </a>
             </div>
             <div className="contact-info-item">
               <FaInstagram className="icon" />
               <a
-                href="https://www.instagram.com/kamera_sigurie_muca"
+                href="https://www.instagram.com/mucatechnology/"
                 target="_blank"
                 rel="noopener noreferrer"
               >
-                @kamera_sigurie_muca
+                @mucatechnology
               </a>
             </div>
             <div className="contact-info-item">
@@ -65,5 +67,5 @@ export default function Contact() {
         </div>
       </div>
     </section>
-  )
+  );
 }
